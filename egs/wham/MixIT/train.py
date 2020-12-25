@@ -114,7 +114,7 @@ def main(conf):
         "mixit": MixITLossWrapper(pairwise_neg_sisdr, generalized=True),
     }
 
-    system = MixITSystem(
+    system = MixITSystem( # the style of pytorch_lighting(pl), just define a pl.trainer, then fit the trainer with this system
         model=model,
         loss_func=loss_func,
         optimizer=optimizer,
@@ -138,7 +138,7 @@ def main(conf):
     gpus = -1 if torch.cuda.is_available() else None
     distributed_backend = "ddp" if torch.cuda.is_available() else None
     trainer = pl.Trainer(
-        max_epochs=conf["training"]["epochs"],
+        max_epochs=conf["training"]["epochs"],  # the trainer is defined with epochs, callbacks and so on
         callbacks=callbacks,
         default_root_dir=exp_dir,
         gpus=gpus,
