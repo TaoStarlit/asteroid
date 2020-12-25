@@ -3,7 +3,7 @@ from ..masknn import DPRNN
 from .base_models import BaseEncoderMaskerDecoder
 
 
-class DPRNNTasNet(BaseEncoderMaskerDecoder):
+class DPRNNTasNet(BaseEncoderMaskerDecoder): # based on model.bash_model BaseEncoderMaskerDecoder, replace the masker by maskknn.DPRNN
     """DPRNN separation model, as described in [1].
 
     Args:
